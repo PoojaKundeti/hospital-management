@@ -1,0 +1,31 @@
+<div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead><tr>
+          @for (column of columns; track column.key) { <th>{{ column.label }}</th> }
+          @if (allowActions) { <th class="text-end">Actions</th> }
+        </tr></thead>
+        <tbody>
+          @for (item of visibleRows; track item['id']) {
+            <tr>
+              @for (column of columns; track column.key) {
+                <td>
+                  @if (column.key === 'specialization' || column.key === 'disease') {
+                    <span class="pill">{{ item[column.key] }}</span>
+                  } @else { {{ item[column.key] }} }
+                </td>
+              }
+              @if (allowActions) {
+                <td class="text-end">
+                  <div class="d-flex justify-content-end gap-2">
+                    <app-action-button action="edit" label="Edit" (clicked)="edit.emit(item)"/>
+                    <app-action-button action="delete" label="Delete" (clicked)="remove.emit(item)"/>
+                  </div>
+                </td>
+              }
+            </tr>
+          } @empty {
+            <tr><td [attr.colspan]="columns.length + (allowActions ? 1 : 0)" class="text-center text-secondary py-5">No records found. Try another search.</td></tr>
+          }
+        </tbody>
+      </table>
+    </div>

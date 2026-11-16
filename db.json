@@ -1,0 +1,61 @@
+{
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Dr. Ravi Kumar",
+      "specialization": "Cardiology",
+      "email": "ravi@hospital.com",
+      "phone": "9876543210"
+    },
+    {
+      "id": "2",
+      "name": "Dr. Meera Rao",
+      "specialization": "Dermatology",
+      "email": "meera@hospital.com",
+      "phone": "9876543211"
+    },
+    {
+      "id": "3",
+      "name": "Dr. Arjun Das",
+      "specialization": "Neurology",
+      "email": "arjun@hospital.com",
+      "phone": "9876543212"
+    },
+    {
+      "name": "Dr. Bhagya sree",
+      "specialization": "Gynecologist",
+      "email": "bagya@gmail.com",
+      "phone": "3216549870",
+      "id": "2dd86a54-54fc-4c56-a386-9552bae7af85"
+    }
+  ],
+  "patients": [
+    {
+      "name": "chethan",
+      "age": 25,
+      "gender": "Male",
+      "disease": "Fever",
+      "email": "chethan@mail.com",
+      "doctorId": "1",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "Ananya",
+      "age": 31,
+      "gender": "Female",
+      "disease": "Migraine",
+      "doctorId": "3",
+      "email": "ananya@mail.com"
+    },
+    {
+      "id": "3",
+      "name": "Rahul",
+      "age": 42,
+      "gender": "Male",
+      "disease": "Skin Allergy",
+      "doctorId": "2",
+      "email": "rahul@mail.com"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<button type="button" class="btn btn-sm"
+      [class.btn-primary]="action === 'add'"
+      [class.btn-outline-primary]="action === 'edit'"
+      [class.btn-outline-danger]="action === 'delete'"
+      [class.btn-light]="action === 'view'"
+      (click)="clicked.emit(action)">
+      {{ label }}
+    </button>

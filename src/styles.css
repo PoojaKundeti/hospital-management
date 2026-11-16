@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+:root { --ink:#172b4d; --muted:#718096; --brand:#2563eb; --canvas:#f4f7fb; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--canvas); color:var(--ink); font-family:'DM Sans',sans-serif; }
+h1,h2,h3,h4,.brand { font-family:'Manrope',sans-serif; }
+.card { border:0; border-radius:16px; box-shadow:0 5px 24px rgba(30,55,90,.06); }
+.btn { border-radius:9px; font-weight:600; }
+.form-control,.form-select { border-radius:9px; padding:.65rem .8rem; border-color:#dce4ef; }
+.table thead th { color:#718096; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; border-bottom:1px solid #e8edf4; }
+.table td { vertical-align:middle; padding:1rem .75rem; }
+.pill { display:inline-flex; padding:.3rem .65rem; border-radius:99px; background:#eaf1ff; color:#2456b5; font-size:.78rem; font-weight:700; }

@@ -1,0 +1,23 @@
+<div class="d-flex min-vh-100">
+      <aside class="sidebar p-4 text-white">
+        <div class="d-flex align-items-center gap-2 mb-5">
+          <div class="logo-mark">+</div><div><div class="brand fw-bold fs-5">CarePoint</div><small class="text-white-50">Hospital Suite</small></div>
+        </div>
+        <div class="text-uppercase small text-white-50 fw-bold mb-2">Admin</div>
+        <a routerLink="/admin/doctors" routerLinkActive="active" class="nav-link">✚ &nbsp; Doctor list</a>
+        <a routerLink="/admin/patients" routerLinkActive="active" class="nav-link">♡ &nbsp; Patient list</a>
+        <div class="text-uppercase small text-white-50 fw-bold mt-4 mb-2">Doctor</div>
+        <a routerLink="/doctor/doctors" routerLinkActive="active" class="nav-link">✚ &nbsp; Doctor directory</a>
+        <a routerLink="/doctor/patients" routerLinkActive="active" class="nav-link">♡ &nbsp; Patient management</a>
+        <div class="text-uppercase small text-white-50 fw-bold mt-4 mb-2">Patient</div>
+        <a routerLink="/patient/patients" routerLinkActive="active" class="nav-link">♡ &nbsp; Patient directory</a>
+        <div class="sidebar-note mt-auto pt-5"><div class="small text-white-50">DEMO PROJECT</div><div class="small">Angular + JSON Server</div></div>
+      </aside>
+      <main class="flex-grow-1 min-width-0">
+        <header class="topbar bg-white px-4 px-lg-5 py-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+          <div><div class="text-secondary small">CAREPOINT / MANAGEMENT</div><strong>Hospital Management System</strong></div>
+          <div class="d-flex align-items-center gap-2"><span class="text-secondary small">Workspace</span><span class="avatar">CP</span></div>
+        </header>
+        <section class="p-4 p-lg-5"><router-outlet /></section>
+      </main>
+    </div>

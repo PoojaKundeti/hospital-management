@@ -1,0 +1,9 @@
+.sidebar{width:255px;flex-shrink:0;background:#142b4a;display:flex;flex-direction:column;min-height:100vh}
+    .logo-mark{width:38px;height:38px;border-radius:12px;background:#4d8aff;display:grid;place-items:center;font-size:27px;font-weight:700}
+    .nav-link{color:#c7d3e4;padding:11px 13px;border-radius:9px;margin:3px 0;text-decoration:none;font-size:.93rem}
+    .nav-link:hover,.nav-link.active{background:#25466f;color:#fff}
+    .topbar{min-height:76px;box-shadow:0 2px 12px rgba(20,43,74,.04)}
+    .avatar{width:36px;height:36px;border-radius:50%;background:#e7efff;color:#2456b5;display:grid;place-items:center;font-weight:700}
+    .sidebar-note{border-top:1px solid #34506f;color:#dce7f5}
+    @media(max-width:760px){.sidebar{width:190px;padding:1rem!important}.topbar{padding:1rem!important}}
+    @media(max-width:560px){.d-flex.min-vh-100{display:block!important}.sidebar{width:100%;min-height:auto;display:block!important}.sidebar-note{display:none}.sidebar .nav-link{display:inline-block}.sidebar .text-uppercase{margin-top:12px!important}}

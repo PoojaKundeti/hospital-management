@@ -1,0 +1,57 @@
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-4">
+      <div>
+        <div class="text-primary fw-bold small text-uppercase mb-2">{{ role }} workspace</div>
+        <h1 class="h2 fw-bold mb-1">{{ entity === 'doctors' ? 'Doctor directory' : 'Patient records' }}</h1>
+        <p class="text-secondary mb-0">{{ description }}</p>
+      </div>
+      @if (editable) {
+        <app-action-button action="add" label="+ Add new record" (clicked)="openAdd()"/>
+      }
+    </div>
+
+    <div class="row g-3 mb-4">
+      <div class="col-sm-6 col-xl-4"><div class="card p-3"><div class="text-secondary small">TOTAL {{ entity === 'doctors' ? 'DOCTORS' : 'PATIENTS' }}</div><div class="fs-3 fw-bold">{{ records.length }}</div></div></div>
+      <div class="col-sm-6 col-xl-4"><div class="card p-3"><div class="text-secondary small">ACCESS LEVEL</div><div class="fs-5 fw-bold mt-1">{{ editable ? 'Manage records' : 'Read only' }}</div></div></div>
+    </div>
+
+    @if (errorMessage) { <div class="alert alert-danger">{{ errorMessage }}</div> }
+    @if (successMessage) { <div class="alert alert-success">{{ successMessage }}</div> }
+
+    <div class="card p-3 p-lg-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <div><h2 class="h5 fw-bold mb-1">{{ entity === 'doctors' ? 'Doctors' : 'Patients' }}</h2><small class="text-secondary">Live data from JSON Server</small></div>
+        <div class="input-group search-box">
+          <span class="input-group-text bg-white border-end-0">⌕</span>
+          <input class="form-control border-start-0" placeholder="Search this list..." [value]="searchText" (input)="searchText = $any($event.target).value">
+        </div>
+      </div>
+      <app-data-table [rows]="records" [columns]="columns" [searchText]="searchText" [allowActions]="editable"
+        (edit)="openEdit($event)" (remove)="deleteRecord($event)"/>
+    </div>
+
+    @if (showForm) {
+      <div class="modal-backdrop-custom">
+        <div class="card modal-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h5 fw-bold mb-0">{{ editingId ? 'Edit' : 'Add' }} {{ entity === 'doctors' ? 'Doctor' : 'Patient' }}</h2>
+            <button class="btn-close" type="button" (click)="closeForm()"></button>
+          </div>
+          <form [formGroup]="recordForm" (ngSubmit)="save()">
+            @if (entity === 'doctors') {
+              <label class="form-label">Doctor name</label><input class="form-control mb-3" formControlName="name" placeholder="Dr. Name">
+              <label class="form-label">Specialization</label><input class="form-control mb-3" formControlName="specialization" placeholder="e.g. Cardiology">
+              <label class="form-label">Email</label><input class="form-control mb-3" formControlName="email" placeholder="doctor@hospital.com">
+              <label class="form-label">Phone</label><input class="form-control mb-3" formControlName="phone" placeholder="10 digit phone">
+            } @else {
+              <label class="form-label">Patient name</label><input class="form-control mb-3" formControlName="name" placeholder="Patient name">
+              <div class="row"><div class="col"><label class="form-label">Age</label><input type="number" class="form-control mb-3" formControlName="age"></div><div class="col"><label class="form-label">Gender</label><select class="form-select mb-3" formControlName="gender"><option>Male</option><option>Female</option><option>Other</option></select></div></div>
+              <label class="form-label">Disease / Condition</label><input class="form-control mb-3" formControlName="disease" placeholder="e.g. Fever">
+              <label class="form-label">Email</label><input class="form-control mb-3" formControlName="email" placeholder="patient@mail.com">
+              <label class="form-label">Assigned doctor</label><select class="form-select mb-3" formControlName="doctorId"><option value="">Select doctor</option>@for (doctor of doctors; track doctor.id) { <option [value]="doctor.id">{{ doctor.name }}</option> }</select>
+            }
+            @if (formError) { <div class="alert alert-danger py-2">{{ formError }}</div> }
+            <div class="d-flex justify-content-end gap-2 mt-4"><button type="button" class="btn btn-light" (click)="closeForm()">Cancel</button><button type="submit" class="btn btn-primary" [disabled]="recordForm.invalid">{{ editingId ? 'Save changes' : 'Create record' }}</button></div>
+          </form>
+        </div>
+      </div>
+    }
